@@ -17,7 +17,7 @@ dependencies {
 ```
 
 ## Usage
-Create an `RemoteMessagesClient` instance with the base URL, optional credentials, and make a query.
+Create a `RemoteMessagesClient` instance with the base URL, optional credentials, and make a query.
 
 Here's an example:
 ```java
