@@ -12,7 +12,7 @@ import lombok.Setter;
 @JsonTypeInfo(property = "type", use = JsonTypeInfo.Id.NAME)
 @JsonSubTypes({
         @JsonSubTypes.Type(name = "text", value = TextMessagePart.class),
-        @JsonSubTypes.Type(name = "medsia", value = MediaMessagePart.class)
+        @JsonSubTypes.Type(name = "media", value = MediaMessagePart.class)
 })
 public class MessagePart {
 
