@@ -8,6 +8,7 @@ This allows for sending and receiving iMessages programmatically with an iOS dev
 ## Installation
 ```groovy
 repositories {
+    jcenter()
     maven { url 'https://jitpack.io' }
 }
 
