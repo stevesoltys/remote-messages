@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NonNull;
 import lombok.Singular;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -24,7 +23,7 @@ public class OutgoingMessage {
 
     @Singular
     @NonNull
-    private Set<String> recipients = new HashSet<>();
+    private Set<String> recipients;
 
     @NonNull
     @Builder.Default

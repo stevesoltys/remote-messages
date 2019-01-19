@@ -11,7 +11,6 @@ import com.stevesoltys.remotemessages.model.conversation.Conversation;
 import com.stevesoltys.remotemessages.model.conversation.ConversationMessages;
 import com.stevesoltys.remotemessages.net.OutgoingMessage;
 import com.stevesoltys.remotemessages.net.RemoteMessagesService;
-import com.sun.istack.internal.Nullable;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
@@ -116,8 +115,7 @@ public class RemoteMessagesClient {
         RequestBody requestBody = new RequestBody() {
 
             @Override
-            public @Nullable
-            MediaType contentType() {
+            public MediaType contentType() {
                 return null;
             }
 
