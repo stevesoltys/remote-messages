@@ -1,6 +1,5 @@
 package com.stevesoltys.remotemessages.model.message;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.stevesoltys.remotemessages.mapper.NumericBooleanDeserializer;
@@ -9,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,7 +23,8 @@ public class Message {
     @JsonDeserialize(using = NumericBooleanDeserializer.class)
     private boolean read;
 
-    private String guid;
+    @JsonProperty("guid")
+    private String id;
 
     @JsonProperty("error_status")
     @JsonDeserialize(using = NumericBooleanDeserializer.class)
@@ -40,8 +39,8 @@ public class Message {
     @JsonDeserialize(using = ReverseNumericBooleanDeserializer.class)
     private boolean sms;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "s")
-    private Date date;
+    @JsonProperty("date")
+    private long timestamp;
 
     private String timeRead;
 
