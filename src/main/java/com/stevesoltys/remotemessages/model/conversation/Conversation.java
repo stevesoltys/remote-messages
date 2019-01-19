@@ -1,12 +1,9 @@
 package com.stevesoltys.remotemessages.model.conversation;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
 
 /**
  * @author Steve Soltys
@@ -32,6 +29,6 @@ public class Conversation {
     @JsonProperty("hash")
     private String id;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "s")
-    private Date date;
+    @JsonProperty("date")
+    private long timestamp;
 }
