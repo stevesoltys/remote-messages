@@ -29,6 +29,6 @@ public class ConversationMessages {
     private Set<ConversationParticipant> participants = new HashSet<>();
 
     @Builder.Default
-    private List<? extends Message> messages = new ArrayList<>();
+    private List<Message> messages = new ArrayList<>();
 
 }
