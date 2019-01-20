@@ -48,22 +48,26 @@ public class RemoteMessagesClient {
     private final RemoteMessagesService remoteMessagesService;
 
     @Builder
-    public RemoteMessagesClient(@NonNull String baseUrl, String username, String password) {
+    public RemoteMessagesClient(@NonNull String baseUrl, String username, String password, OkHttpClient client) {
         this.baseUrl = baseUrl;
 
-        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+        if(client == null) {
+            OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
 
-        if(Strings.isNotEmpty(username) && Strings.isNotEmpty(password)) {
-            DigestAuthenticator authenticator = new DigestAuthenticator(new Credentials(username, password));
-            Map<String, CachingAuthenticator> authCache = new ConcurrentHashMap<>();
+            if(Strings.isNotEmpty(username) && Strings.isNotEmpty(password)) {
+                DigestAuthenticator authenticator = new DigestAuthenticator(new Credentials(username, password));
+                Map<String, CachingAuthenticator> authCache = new ConcurrentHashMap<>();
 
-            clientBuilder.authenticator(new CachingAuthenticatorDecorator(authenticator, authCache));
-            clientBuilder.addInterceptor(new AuthenticationCacheInterceptor(authCache));
+                clientBuilder.authenticator(new CachingAuthenticatorDecorator(authenticator, authCache));
+                clientBuilder.addInterceptor(new AuthenticationCacheInterceptor(authCache));
+            }
+
+            client = clientBuilder.build();
         }
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .client(clientBuilder.build())
+                .client(client)
                 .addConverterFactory(JacksonConverterFactory.create(OBJECT_MAPPER))
                 .build();
 
