@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.stevesoltys:remote-messages:0.1.4'
+    compile 'com.github.stevesoltys:remote-messages:0.1.5'
 }
 ```
 
